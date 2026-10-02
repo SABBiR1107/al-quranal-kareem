@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Placeholder app icon. Replace with the real Al-Quran Al-Kareem icon (same file name). -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="75%">
+      <stop offset="0" stop-color="#1d6b53"/>
+      <stop offset="1" stop-color="#082b21"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g fill="none" stroke="#d6b067" stroke-width="10" stroke-linejoin="round">
+    <rect x="135.8" y="135.8" width="240.4" height="240.4"/>
+    <rect x="135.8" y="135.8" width="240.4" height="240.4" transform="rotate(45 256 256)"/>
+  </g>
+  <circle cx="256" cy="256" r="92" fill="#0c3f30" stroke="#d6b067" stroke-width="4"/>
+  <g fill="#f3ecdc">
+    <path d="M252 232c-14-10-34-13-56-10v66c22-3 42 0 56 10z"/>
+    <path d="M260 232c14-10 34-13 56-10v66c-22-3-42 0-56 10z"/>
+  </g>
+</svg>
