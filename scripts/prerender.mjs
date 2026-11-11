@@ -1,5 +1,5 @@
-// Runs after `vite build`. Renders every page to static HTML, writes the
-// sitemap, and checks that app-ads.txt made it into the output unchanged.
+// Runs after `vite build`. Renders every page to static HTML and writes the
+// sitemap.
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -9,8 +9,6 @@ const root = fileURLToPath(new URL('..', import.meta.url))
 const dist = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 const siteUrl = resolveSiteUrl(process.env)
-
-const APP_ADS_LINE = 'google.com, pub-9250366510239722, DIRECT, f08c47fec0942fa0'
 
 const { render } = await import(pathToFileURL(path.join(ssrDir, 'entry-server.js')).href)
 
@@ -38,11 +36,3 @@ if (siteUrl) {
 } else {
   console.log('  sitemap.xml  skipped (set SITE_URL to generate it locally)')
 }
-
-// app-ads.txt must be served verbatim from the site root.
-const ads = await fs.readFile(path.join(dist, 'app-ads.txt'), 'utf8').catch(() => null)
-if (ads === null) throw new Error('dist/app-ads.txt is missing')
-if (ads.replace(/\r?\n$/, '') !== APP_ADS_LINE) {
-  throw new Error(`dist/app-ads.txt has unexpected content:\n${ads}`)
-}
-console.log('  app-ads.txt  verified')

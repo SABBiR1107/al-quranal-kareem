@@ -4,16 +4,17 @@
 // build scripts.
 // ---------------------------------------------------------------------------
 
-export const APP_NAME = 'Al-Quran Al-Kareem'
-export const APP_NAME_ARABIC = 'القرآن الكريم'
-export const PACKAGE_NAME = 'com.alquran.alkareembd'
+export const APP_NAME = 'Holy Quran'
+export const APP_TAGLINE = 'Read & Listen'
+export const APP_NAME_ARABIC = 'القرآن'
+export const PACKAGE_NAME = 'com.holyquran.readlisten'
 export const APP_CATEGORY = 'Books & Reference / Islamic'
 
 // App icon shown in the header, hero and download section (file in public/).
 export const APP_ICON = '/app-icon.svg'
 
-// Replace with the real Google Play listing URL, e.g.
-// 'https://play.google.com/store/apps/details?id=com.alquran.alkareembd'
+// Replace with the real Google Play listing URL once the app is published, e.g.
+// 'https://play.google.com/store/apps/details?id=com.holyquran.readlisten'
 export const GOOGLE_PLAY_URL = 'YOUR_GOOGLE_PLAY_URL'
 
 // Placeholder — replace with the developer's real contact address.
@@ -21,8 +22,10 @@ export const GOOGLE_PLAY_URL = 'YOUR_GOOGLE_PLAY_URL'
 // this value is changed.
 export const DEVELOPER_EMAIL = 'developer@example.com'
 
-// Existing privacy policy. Do not change.
-export const PRIVACY_POLICY_URL = 'https://sites.google.com/view/al-quranal-kareem/home'
+// The privacy policy and terms now live on this site itself (below), not on
+// an external page — these are relative paths, not a separate canonical URL.
+export const PRIVACY_POLICY_URL = '/privacy-policy'
+export const TERMS_URL = '/terms'
 
 // ---------------------------------------------------------------------------
 // Derived values
@@ -55,44 +58,52 @@ export const pages = [
     id: 'home',
     file: 'index.html',
     path: '/',
-    title: 'Al-Quran Al-Kareem — Quran App',
-    description: 'Al-Quran Al-Kareem is a simple and accessible Quran application for Android.',
+    title: 'Holy Quran: Read & Listen — Quran App',
+    description:
+      'Holy Quran: Read & Listen — read the Mushaf page by page, listen to recitation by well-known reciters, and keep prayer times and Qibla direction close at hand. Free, ad-free, no sign-up.',
   },
   {
     id: 'about',
     file: 'about/index.html',
     path: '/about',
-    title: 'About — Al-Quran Al-Kareem',
+    title: 'About — Holy Quran: Read & Listen',
     description:
-      'What Al-Quran Al-Kareem is and why it exists: a simple, accessible way to read the Holy Quran on Android.',
+      'What Holy Quran: Read & Listen is and why it exists: a calm, ad-free way to read, listen to and learn the Quran on Android.',
   },
   {
     id: 'features',
     file: 'features/index.html',
     path: '/features',
-    title: 'Features — Al-Quran Al-Kareem',
+    title: 'Features — Holy Quran: Read & Listen',
     description:
-      'Quran reading, a clean interface, simple navigation and a mobile-friendly design in the Al-Quran Al-Kareem Android app.',
+      'Mushaf reading, recitation by well-known reciters, prayer times and Qibla direction, offline downloads, and a calm, ad-free design.',
   },
   {
     id: 'privacy',
     file: 'privacy-policy/index.html',
     path: '/privacy-policy',
-    title: 'Privacy Policy — Al-Quran Al-Kareem',
-    description: 'Privacy information for the Al-Quran Al-Kareem Android app and this website.',
+    title: 'Privacy Policy — Holy Quran: Read & Listen',
+    description: 'Privacy information for the Holy Quran: Read & Listen Android app and this website.',
+  },
+  {
+    id: 'terms',
+    file: 'terms/index.html',
+    path: '/terms',
+    title: 'Terms of Use — Holy Quran: Read & Listen',
+    description: 'The terms that apply to using the Holy Quran: Read & Listen Android app and this website.',
   },
   {
     id: 'contact',
     file: 'contact/index.html',
     path: '/contact',
-    title: 'Contact — Al-Quran Al-Kareem',
-    description: 'Get in touch with the developer of the Al-Quran Al-Kareem Android app.',
+    title: 'Contact — Holy Quran: Read & Listen',
+    description: 'Get in touch with the developer of the Holy Quran: Read & Listen Android app.',
   },
   {
     id: 'not-found',
     file: '404.html',
     path: null,
-    title: 'Page not found — Al-Quran Al-Kareem',
+    title: 'Page not found — Holy Quran: Read & Listen',
     description: 'The page you were looking for could not be found.',
     noindex: true,
   },
@@ -103,5 +114,6 @@ export const navLinks = [
   { id: 'about', label: 'About', href: '/about' },
   { id: 'features', label: 'Features', href: '/features' },
   { id: 'privacy', label: 'Privacy', href: '/privacy-policy' },
+  { id: 'terms', label: 'Terms', href: '/terms' },
   { id: 'contact', label: 'Contact', href: '/contact' },
 ]

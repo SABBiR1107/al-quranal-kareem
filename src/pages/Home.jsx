@@ -1,4 +1,4 @@
-import { APP_NAME } from '../config.js'
+import { APP_NAME, APP_TAGLINE } from '../config.js'
 import { features } from '../content.js'
 import FeatureIcon from '../components/FeatureIcon.jsx'
 import { ArrowIcon } from '../components/Icons.jsx'
@@ -15,12 +15,13 @@ export default function Home() {
           <div className="hero__copy">
             <p className="eyebrow">Android app · Books &amp; Reference</p>
             <h1 id="hero-title">
-              Al-Quran <span>Al-Kareem</span>
+              Holy <span>Quran</span>
             </h1>
-            <p className="hero__lede">A simple and accessible Quran application for Android.</p>
+            <p className="hero__lede">{APP_TAGLINE} — a calm, ad-free way to read, listen to and learn the Quran.</p>
             <p className="hero__text">
-              Open the Holy Quran on your phone and read in a calm, uncluttered space — designed to
-              stay out of the way so that the words come first.
+              Read the Mushaf page by page, listen to recitation by well-known reciters, keep track of
+              prayer times and Qibla direction, and pick up a daily reading habit — all in one quiet,
+              uncluttered app with no sign-up and no ads.
             </p>
             <div className="hero__actions">
               <PlayButton />
@@ -53,13 +54,14 @@ export default function Home() {
           </div>
           <div className="intro__body">
             <p>
-              {APP_NAME} is an Android application for reading the Holy Quran. It is built around a
-              single idea: opening the Quran on your phone should be easy, and reading it should feel
-              calm and clear.
+              {APP_NAME} is an Android application for reading, listening to and learning the Holy
+              Quran. It is built around a single idea: opening the Quran on your phone should be easy,
+              and using it every day should feel calm and clear, never crowded.
             </p>
             <p>
-              The app keeps its interface plain and its navigation straightforward, so that anyone can
-              pick it up and begin reading without having to learn how it works first.
+              The app keeps its interface plain and its navigation straightforward, with no account, no
+              advertising and nothing watching how you use it — so that anyone can pick it up and begin
+              reading without having to learn how it works first.
             </p>
             <a className="link-arrow" href="/about">
               Read more about the app <ArrowIcon />

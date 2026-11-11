@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import { APP_ICON, APP_NAME, APP_NAME_ARABIC, PACKAGE_NAME, PRIVACY_POLICY_URL, navLinks } from '../config.js'
+import { APP_ICON, APP_NAME, APP_NAME_ARABIC, APP_TAGLINE, PACKAGE_NAME, PRIVACY_POLICY_URL, navLinks } from '../config.js'
 import { MenuIcon } from './Icons.jsx'
 import { StarPattern } from './Ornament.jsx'
 import PlayButton from './PlayButton.jsx'
 
 function Brand() {
   return (
-    <a className="brand" href="/" aria-label={`${APP_NAME} — home`}>
+    <a className="brand" href="/" aria-label={`${APP_NAME}: ${APP_TAGLINE} — home`}>
       <img src={APP_ICON} width="36" height="36" alt="" />
       <span className="brand__name">
-        Al-Quran <em>Al-Kareem</em>
+        Holy <em>Quran</em>
       </span>
     </a>
   )
@@ -63,7 +63,7 @@ function Footer() {
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
           <Brand />
-          <p>A simple and accessible Quran application for Android.</p>
+          <p>Read, listen to and learn the Holy Quran — calm, ad-free, on Android.</p>
           <p className="site-footer__arabic" lang="ar" dir="rtl">
             {APP_NAME_ARABIC}
           </p>
@@ -82,9 +82,7 @@ function Footer() {
           <h2 className="site-footer__heading">App</h2>
           <ul>
             <li>
-              <a href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
-                Full privacy policy<span className="visually-hidden"> (opens in a new tab)</span>
-              </a>
+              <a href={PRIVACY_POLICY_URL}>Privacy policy</a>
             </li>
             <li>
               <a href="/#download">Download on Google Play</a>

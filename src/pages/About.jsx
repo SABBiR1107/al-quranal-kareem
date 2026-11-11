@@ -7,29 +7,29 @@ const sections = [
     id: 'what',
     title: `What ${APP_NAME} is`,
     body: [
-      `${APP_NAME} — “The Noble Quran” — is an Android application for reading the Holy Quran. It is published on Google Play in the Books & Reference category.`,
+      `${APP_NAME}: Read & Listen is an Android application for reading, listening to and learning the Holy Quran — the Mushaf page by page, recitation by well-known reciters, translation and tafsir, prayer times and Qibla direction, all in one app. It is published on Google Play in the Books & Reference category.`,
     ],
   },
   {
     id: 'purpose',
     title: 'Why it was made',
     body: [
-      'The purpose of the app is straightforward: to give anyone with an Android phone an easy way to open and read the Quran, wherever they happen to be.',
+      'The purpose of the app is straightforward: to give anyone with an Android phone an easy, unhurried way to keep the Quran close — to read it, to listen to it, and to build a daily habit around it — without an account, without advertising, and without anything in the app trying to hold your attention longer than you meant to give it.',
     ],
   },
   {
     id: 'simple',
-    title: 'Simple, accessible reading',
+    title: 'Calm, accessible by design',
     body: [
-      'The app focuses on reading. Its interface is kept plain and its navigation direct, so that nothing stands between the reader and the text.',
+      'The app focuses on reading and listening. Its interface is kept plain and its navigation direct, so that nothing stands between you and the text — eight light and dark themes let you choose what is comfortable, including a warm Sepia for long reading sessions and a true-black Midnight for night.',
       'That simplicity is intentional. It makes the app approachable for first-time users and comfortable for those who return to it every day.',
     ],
   },
   {
     id: 'mobile',
-    title: 'Made for mobile',
+    title: 'Made for mobile, and for offline use',
     body: [
-      'The app is designed for phones. Its layout suits a smaller screen, so reading feels natural whether you are at home, travelling, or have a few quiet minutes in your day.',
+      'The app is designed for phones, with a layout suited to reading and listening on a smaller screen. Recitations can be downloaded once and kept for offline listening, so reading feels natural whether you are at home, travelling, or have a few quiet minutes with no signal at all.',
     ],
   },
 ]

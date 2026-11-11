@@ -1,10 +1,10 @@
-import { APP_NAME, PRIVACY_POLICY_URL } from '../config.js'
+import { APP_NAME } from '../config.js'
 import { privacyPolicy as policy } from '../content.js'
-import { ExternalIcon, LockIcon, MegaphoneIcon, PinIcon, UserIcon } from '../components/Icons.jsx'
+import { LockIcon, PinIcon, ShieldIcon, UserIcon } from '../components/Icons.jsx'
 import { StarFrame } from '../components/Ornament.jsx'
 import { PageHeader } from '../components/Sections.jsx'
 
-const highlightIcons = { account: UserIcon, location: PinIcon, ads: MegaphoneIcon, secure: LockIcon }
+const highlightIcons = { account: UserIcon, location: PinIcon, tracking: ShieldIcon, secure: LockIcon }
 
 const toc = [
   ...policy.sections.map((s, i) => ({ id: s.id, label: `${i + 1}. ${s.title}` })),
@@ -32,15 +32,9 @@ export default function Privacy() {
         eyebrow="Privacy"
         title="Privacy Policy"
         meta={
-          <>
-            <span className="meta-chip">
-              Effective date: <time dateTime="2026-09-08">{policy.effectiveDate}</time>
-            </span>
-            <a className="meta-chip meta-chip--link" href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
-              View the original policy <ExternalIcon />
-              <span className="visually-hidden"> (opens in a new tab)</span>
-            </a>
-          </>
+          <span className="meta-chip">
+            Effective date: <time dateTime="2026-11-11">{policy.effectiveDate}</time>
+          </span>
         }
       >
         How the {APP_NAME} app collects, uses and protects information about you.
@@ -118,12 +112,7 @@ export default function Privacy() {
               <h2 id="questions-title">Questions</h2>
               <p>
                 If you have a question about this policy, please use the details on the{' '}
-                <a href="/contact">contact page</a>. This policy is also published at{' '}
-                <a href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
-                  {PRIVACY_POLICY_URL.replace('https://', '')}
-                  <span className="visually-hidden"> (opens in a new tab)</span>
-                </a>
-                .
+                <a href="/contact">contact page</a>.
               </p>
             </section>
           </article>

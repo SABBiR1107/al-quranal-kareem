@@ -1,7 +1,7 @@
-# Al-Quran Al-Kareem — developer website
+# Holy Quran: Read & Listen — developer website
 
-The official developer website for **Al-Quran Al-Kareem**, a Quran application for Android
-(`com.alquran.alkareembd`).
+The official developer website for **Holy Quran: Read & Listen**, an ad-free Quran application for
+Android (`com.holyquran.readlisten`).
 
 Built with **React + Vite** and pre-rendered to plain static HTML at build time. There is no backend,
 no database and no server to keep running, so it deploys for free on Vercel (or any static host).
@@ -10,15 +10,15 @@ no database and no server to keep running, so it deploys for free on Vercel (or 
 
 | Path | Purpose |
 | --- | --- |
-| `public/app-ads.txt` | **AdMob app-ads.txt** — copied verbatim to the site root (`/app-ads.txt`) |
 | `src/config.js` | **The file you edit**: Google Play URL, contact email, page titles/descriptions |
-| `src/pages/` | Home, About, Features, Privacy Policy, Contact, 404 |
+| `src/content.js` | Feature list, Privacy Policy and Terms of Use text |
+| `src/pages/` | Home, About, Features, Privacy Policy, Terms, Contact, 404 |
 | `src/components/` | Header, footer, Google Play button, geometric ornaments |
 | `src/styles/global.css` | All styles (mobile-first, automatic light/dark) |
 | `index.html`, `about/index.html`, … | One HTML entry per page (real files, no SPA routing) |
-| `scripts/prerender.mjs` | Renders each page to static HTML, writes `sitemap.xml`, and verifies `app-ads.txt` |
+| `scripts/prerender.mjs` | Renders each page to static HTML and writes `sitemap.xml` |
 | `public/` | Favicon, app icon, social-share image, `robots.txt`, web manifest |
-| `vercel.json` | Clean URLs, `text/plain` header for `app-ads.txt`, caching and security headers |
+| `vercel.json` | Clean URLs, caching and security headers |
 
 ### Pages and URLs
 
@@ -27,27 +27,12 @@ no database and no server to keep running, so it deploys for free on Vercel (or 
 | `/` | Home (hero, introduction, features, Google Play download section at `/#download`) |
 | `/about` | About |
 | `/features` | Features |
-| `/privacy-policy` | Privacy Policy (links to the existing policy) |
+| `/privacy-policy` | Privacy Policy |
+| `/terms` | Terms of Use |
 | `/contact` | Contact |
-| `/app-ads.txt` | Plain-text AdMob file |
 
-## app-ads.txt
-
-`public/app-ads.txt` contains exactly:
-
-```
-google.com, pub-9250366510239722, DIRECT, f08c47fec0942fa0
-```
-
-Vite copies everything in `public/` to the root of the build output unchanged, so after deployment the
-file is served at `https://YOUR-DOMAIN.com/app-ads.txt` as plain text with HTTP 200.
-
-Why it can't be swallowed by the homepage:
-
-- Every page is its own static HTML file. There are **no rewrites** in `vercel.json` and no SPA
-  fallback, so `/app-ads.txt` can only resolve to the real file.
-- `vercel.json` also sets `Content-Type: text/plain; charset=utf-8` on that path.
-- The build **fails** if `dist/app-ads.txt` is missing or its content differs from the line above.
+The app has no ads, no analytics and no advertising SDK, so this site does not carry an `app-ads.txt`
+file — that file only matters for apps that sell ad inventory through AdMob.
 
 ## Before you deploy: replace the placeholders
 
@@ -59,17 +44,13 @@ export const DEVELOPER_EMAIL = 'developer@example.com'   // ← your real contac
 ```
 
 - **Google Play URL** — while it is still `YOUR_GOOGLE_PLAY_URL`, every Google Play button falls back
-  to `https://play.google.com/store/apps/details?id=com.alquran.alkareembd`, so no button is ever a
-  dead link. Paste your listing URL to use it instead.
+  to `https://play.google.com/store/apps/details?id=com.holyquran.readlisten`, so no button is ever a
+  dead link. Paste your listing URL to use it instead, once the app is published.
 - **Email** — while it is `developer@example.com`, the Contact page shows a clear "Placeholder" badge and
   notice. Both disappear automatically once you set a real address.
-- **App icon** — `public/app-icon.svg` is a placeholder emblem. Put your real icon in `public/`
-  (e.g. `app-icon.png`) and set `APP_ICON` in `src/config.js` to its path. Optionally regenerate
-  `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` and
-  `og-image.png` (1200×630) to match.
 
-The privacy policy link (`https://sites.google.com/view/al-quranal-kareem/home`) is already set and
-should not be changed.
+The Privacy Policy and Terms of Use are written out in full on this site (`src/content.js`,
+`/privacy-policy` and `/terms`) — there is no separate external policy page to keep in sync.
 
 ## Run locally
 
@@ -93,8 +74,6 @@ npm run build
 npm run preview
 ```
 
-Then check http://localhost:4173/app-ads.txt — it should show the single plain-text line.
-
 ## Deploy to Vercel (free)
 
 ### Option A — GitHub + Vercel dashboard (recommended)
@@ -108,10 +87,6 @@ Then check http://localhost:4173/app-ads.txt — it should show the single plain
    - Output Directory: `dist`
 5. Click **Deploy**. After about a minute you get a free HTTPS URL such as
    `https://your-project.vercel.app`.
-6. Verify: open `https://your-project.vercel.app/app-ads.txt`. You should see only:
-   ```
-   google.com, pub-9250366510239722, DIRECT, f08c47fec0942fa0
-   ```
 
 Every later `git push` to `main` redeploys automatically.
 
@@ -133,22 +108,17 @@ HTTPS certificates are issued automatically and free. The canonical URL, Open Gr
 `VERCEL_PROJECT_PRODUCTION_URL`). To force a specific URL, add an environment variable
 `SITE_URL=https://your-domain.com` in **Settings → Environment Variables** and redeploy.
 
-### Connect it to AdMob
+### Using this site's Privacy Policy page in Google Play Console
 
-app-ads.txt must live on the **root of the domain listed as the developer website on Google Play**.
-
-1. In the Google Play Console, open the app → **Store presence → Store settings** → set
-   **Website** to your deployed domain (e.g. `https://your-domain.com`).
-2. Confirm `https://your-domain.com/app-ads.txt` loads the plain-text line.
-3. In AdMob, open **Apps → app-ads.txt** and click **Check for updates**. Verification can take up to
-   24 hours.
+Once this site is deployed, its `/privacy-policy` page (e.g.
+`https://your-domain.com/privacy-policy`) can be pasted directly into Play Console's
+**App content → Privacy policy** field — no separate policy host is needed.
 
 ## Checklist
 
-- [x] `public/app-ads.txt` exists and contains exactly the required line
-- [x] Served at `https://YOUR-DOMAIN.com/app-ads.txt` as `text/plain`, HTTP 200 — no rewrites
 - [x] Static site: no paid backend, database, API or always-on server
 - [x] Free HTTPS on Vercel
 - [x] Per-page titles, meta descriptions, Open Graph/Twitter tags, canonical URLs, sitemap
 - [x] Semantic HTML, skip link, keyboard-accessible navigation, reduced-motion support
-- [x] No cookies, analytics or third-party font requests
+- [x] No cookies, analytics, advertising or third-party font requests
+- [x] Privacy Policy and Terms of Use published on the site itself

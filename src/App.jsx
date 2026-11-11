@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Features from './pages/Features.jsx'
 import Privacy from './pages/Privacy.jsx'
+import Terms from './pages/Terms.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -11,6 +12,7 @@ const views = {
   about: About,
   features: Features,
   privacy: Privacy,
+  terms: Terms,
   contact: Contact,
   'not-found': NotFound,
 }
