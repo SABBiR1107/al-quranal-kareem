@@ -74,9 +74,51 @@ npm run build
 npm run preview
 ```
 
-## Deploy to Vercel (free)
+## Deploy to GitHub Pages with a custom .io domain (recommended)
 
-### Option A — GitHub + Vercel dashboard (recommended)
+This repo already has everything in place: `.github/workflows/deploy-pages.yml` builds the site and
+publishes it on every push to `main`, and `public/CNAME` tells GitHub Pages which custom domain to
+serve it on.
+
+### 1. Turn on Pages for this repo (one-time, in the GitHub web UI)
+
+1. Open the repo on GitHub → **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions** (not "Deploy from a branch").
+3. That's it — the next push to `main` (or a manual run from the **Actions** tab) builds and deploys.
+
+### 2. Point your .io domain at it
+
+Replace `YOUR-DOMAIN.io` in **`public/CNAME`** with your real domain (just the bare domain, no
+`https://`), and also set it as `SITE_URL` so canonical links, Open Graph tags and the sitemap use it:
+
+- Repo → **Settings → Secrets and variables → Actions → Variables** tab → **New repository
+  variable** → name `SITE_URL`, value `https://your-domain.io` (with the protocol, here).
+
+Then, at your domain registrar (wherever you bought the `.io`), set up DNS so both the bare domain and
+`www` work:
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` (or blank/apex) | `185.199.108.153` |
+| A | `@` (or blank/apex) | `185.199.109.153` |
+| A | `@` (or blank/apex) | `185.199.110.153` |
+| A | `@` (or blank/apex) | `185.199.111.153` |
+| CNAME | `www` | `SABBiR1107.github.io` |
+
+(Four `A` records, all pointing at the apex/root — add all four. DNS can take anywhere from a few
+minutes to a few hours to update.)
+
+### 3. Confirm it in GitHub
+
+Back in **Settings → Pages**, once DNS has propagated, GitHub shows the custom domain as verified and
+offers an **Enforce HTTPS** checkbox — turn it on (GitHub issues the certificate automatically, free).
+
+After this one-time setup, every `git push` to `main` rebuilds and redeploys automatically — nothing
+else to run by hand.
+
+## Deploy to Vercel (free) — alternative
+
+### Option A — GitHub + Vercel dashboard
 
 1. The code lives at https://github.com/SABBiR1107/al-quranal-kareem (branch `main`).
 2. Sign in at [vercel.com](https://vercel.com) with GitHub (the **Hobby** plan is free).

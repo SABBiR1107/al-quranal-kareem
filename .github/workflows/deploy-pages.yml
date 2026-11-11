@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets you re-run a deploy by hand from the Actions tab, with no new commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time; a newer push wins over a still-running one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # SITE_URL fills in the canonical/Open Graph tags and sitemap.xml with
+      # your real domain. Set it once as a repo variable (Settings → Secrets
+      # and variables → Actions → Variables → New repository variable,
+      # name SITE_URL, value e.g. https://your-domain.io) and this workflow
+      # picks it up automatically — no need to edit this file again.
+      - run: npm run build
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://YOUR-DOMAIN.io' }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
